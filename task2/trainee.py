@@ -8,6 +8,7 @@ results = []
 parser = argparse.ArgumentParser(description="description file")
 parser.add_argument('-d', dest='filename', help='description file')
 parser.add_argument('files', metavar='FILE', nargs='*', help='files to read, if empty, stdin is used')
+
 args = parser.parse_args()
 
 with open(args.filename) as f:
