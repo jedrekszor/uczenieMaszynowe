@@ -15,21 +15,23 @@ y = []
 coef = []
 inputs = []
 dim, pw = 0, 0
-learning_rate = 0.06
+learning_rate = 0.05
 stop_condition = 0.00001
 
 ##### POLYNOMIAL INPUT #####
 firstline = True
+temp = []
 for line in fileinput.input(files=args.files):
     if firstline:
         dim, pw = map(int, line.split())
         firstline = False
         continue
-    inputs.append(list(map(float, line.split()))[:pw])
-    coef.append(list(map(float, line.split()))[pw])
-for line in range(0, len(inputs)):
-    for column in range(0, len(inputs[line])):
-        inputs[line][column] = int(inputs[line][column])
+    temp.append(list(map(float, line.split())))
+temp.sort(key=lambda col: col[0])
+temp = list(reversed(temp))
+for line in range(0, len(temp)):
+    inputs.append(map(int, temp[line][:pw]))
+    coef.append(temp[line][pw])
 
 ##### TRAIN DATA #####
 with open(args.train_set) as f:
@@ -52,11 +54,12 @@ for it in range(0, iterations):
     batch_error = [0] * (len(coef))
     for case in range(0, len(x)):
         base = y[case] - polynomial.calculate_polynomial(x[case], coef, inputs)
+
         for d in range(0, len(batch_error)):
-            batch_error[d] += base
-            if inputs[d][0] == 0:
-                continue
-            batch_error[d] *= x[case][inputs[d][0] - 1]
+            temp_batch_error = base
+            if inputs[d][0] != 0:
+                temp_batch_error *= x[case][inputs[d][0] - 1]
+            batch_error[d] += temp_batch_error
     for deg in range(0, len(batch_error)):
         batch_error[deg] *= -2.0 / len(x)
 
