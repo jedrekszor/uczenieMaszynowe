@@ -37,13 +37,28 @@ def scale_y(y):
     return y
 
 
-def calculate_polynomial(x, coefs):
-    result = 0
-    for dim in range(0, len(coefs) - 1):
-        for degree in range(0, len(coefs[dim])):
-            argument = 1
-            for pos in range(1, degree + 2):
-                argument *= x[dim]
-            result += argument * coefs[dim][degree]
-    result += coefs[-1][0]
-    return result
+def calculate_polynomial(input_x, coeffs):
+    y_pred = []
+    for arg_num in range(0, len(input_x)):
+        f = 0.0
+        for x in coeffs:
+            res = 1.0
+            for y in range(0, len(x) - 1):
+                if x[y] != 0:
+                    res = res * input_x[arg_num][int(x[y]) - 1]
+            res = res * float(x[len(x) - 1])
+            f = f + res
+        y_pred.append(f)
+    return y_pred
+
+
+def initialize_coefs(k, factors, n=1, depth=0):
+    res = []
+    if depth == k:
+        res.append(factors)
+        res[-1].append(1.0)
+    else:
+        for i in range(0, n + 1):
+            new_factors = factors + [i]
+            res.extend(initialize_coefs(k, new_factors, i, depth + 1))
+    return res
