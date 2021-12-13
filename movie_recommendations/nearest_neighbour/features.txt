@@ -1,0 +1,10 @@
+genres - gatunki, do których należy film
+director - reżyser
+cast - aktorzy
+vote_average - ocena w serwisie
+keywords - słowa kluczowe powiązane z filmem
+production_countries - kraje odpowiedzialne za produkcję
+budget - budżet filmu
+popularity - popularność filmu
+release_date - data premiery
+original_language - język filmu

@@ -7,7 +7,8 @@ DATA_SOURCE_FILE = '../data/movie.csv'
 DATA_DESTINATION_FILE = '../data/movie_data.csv'
 
 movies = pd.DataFrame(
-    columns=["genres", "director", "cast", "vote_average", "keywords", "production_countries", "budget", "popularity"])
+    columns=["genres", "director", "cast", "vote_average", "keywords", "production_countries", "budget", "popularity",
+             "release_date", "original_language"])
 map_name = lambda mov: mov["name"]
 
 
@@ -25,13 +26,16 @@ def get_movie(movie_id, index):
     production_countries = list(map(map_name, movie_info["production_countries"]))
     budget = movie_info["budget"]
     popularity = movie_info["popularity"]
+    release_date = movie_info["release_date"]
+    original_language = movie_info["original_language"]
 
-    movies.loc[index] = [genres, director, cast, vote_average, keywords, production_countries, budget, popularity]
+    movies.loc[index] = [genres, director, cast, vote_average, keywords, production_countries, budget, popularity,
+                         release_date, original_language]
 
 
 def get_movie_data():
     if os.path.isfile(DATA_DESTINATION_FILE):
-        return pd.read_csv(DATA_DESTINATION_FILE, sep=";")
+        return pd.read_csv(DATA_DESTINATION_FILE, sep=",")
 
     print("Downloading data...")
     initial_data = pd.read_csv(

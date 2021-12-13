@@ -1,0 +1,4 @@
+Obliczenie podobieństwa składa się z 2 bloków: wartości tekstowe i nietekstowe.
+Wartości tekstowe zamieniane są na listę binarną i liczona jest między nimi odległość cosinusowa.
+Wartości liczbowe są liczone jako moduł z różnicy.
+Między datami premiery liczona jest wartość absolutna z różnicy dni.
