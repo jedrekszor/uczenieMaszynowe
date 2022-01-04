@@ -1,0 +1,4 @@
+Z uwagi na charakter zadania zdeycydowałem się pozostawić jedynie cechy numeryczne
+vote_average - średnia ocena filmu
+budget - budżet
+popularity - popularność

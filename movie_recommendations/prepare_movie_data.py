@@ -7,7 +7,7 @@ DATA_SOURCE_FILE = '../data/movie.csv'
 DATA_DESTINATION_FILE = '../data/movie_data.csv'
 
 movies = pd.DataFrame(
-    columns=["genres", "director", "cast", "vote_average", "keywords", "production_countries", "budget", "popularity",
+    columns=["movie_id", "genres", "director", "cast", "vote_average", "keywords", "production_countries", "budget", "popularity",
              "release_date", "original_language"])
 map_name = lambda mov: mov["name"]
 
@@ -29,7 +29,7 @@ def get_movie(movie_id, index):
     release_date = movie_info["release_date"]
     original_language = movie_info["original_language"]
 
-    movies.loc[index] = [genres, director, cast, vote_average, keywords, production_countries, budget, popularity,
+    movies.loc[index] = [movie_id, genres, director, cast, vote_average, keywords, production_countries, budget, popularity,
                          release_date, original_language]
 
 

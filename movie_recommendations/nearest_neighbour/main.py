@@ -1,5 +1,4 @@
 import operator
-
 from prepare_movie_data import get_movie_data
 from scipy import spatial
 from dateutil.parser import parse
@@ -13,7 +12,6 @@ K = 9
 
 def binarize(data, unique):
     result = []
-
     for u in unique:
         if u in data:
             result.append(1)
@@ -106,6 +104,7 @@ def calculate_similarity(movies, movie_id_a, movie_id_b):
 
 
 movies = get_movie_data()
+exit(0)
 movies = prepare_movie_data(movies)
 
 train = pd.read_csv(TRAIN_FILE, sep=";", names=["id", "user", "movie_id", "rating"])
