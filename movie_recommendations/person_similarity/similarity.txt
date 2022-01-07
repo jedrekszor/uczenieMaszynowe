@@ -1,0 +1,1 @@
+Podobieństwo między użytkownikami jest liczone za pomocą współczynnika korelacji Pearsona

@@ -1,0 +1,1 @@
+Końcowy wynik obliczany jest jako średnia arytmetyczna ocen pięciu najbardziej podobnych użytkowników
