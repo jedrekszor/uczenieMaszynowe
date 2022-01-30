@@ -60,14 +60,17 @@ for it in range(0, iterations):
             if inputs[d][0] != 0:
                 temp_batch_error *= x[case][inputs[d][0] - 1]
             batch_error[d] += temp_batch_error
+    # gradient
     for deg in range(0, len(batch_error)):
         batch_error[deg] *= -2.0 / len(x)
 
-    ##### GRADIENT #####
+    # adjusting coefficients
     new_coef = []
     for c in range(0, len(coef)):
         new_coef.append(coef[c] - learning_rate * batch_error[c])
     coef = new_coef
+
+    # break condition
     can_stop = True
     for stop in batch_error:
         if abs(stop) > stop_condition:

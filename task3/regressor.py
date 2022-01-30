@@ -146,6 +146,7 @@ test_x = [
 # saving to out.txt
 outs = []
 outputs = tools.calculate_polynomial(test_x, coefs)
+# rescaling output
 outputs = [(p + 1) / 2.0 * (max_y - min_y) + min_y for p in outputs]
 for outp in outputs:
     print(outp)
